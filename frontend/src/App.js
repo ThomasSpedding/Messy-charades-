@@ -11,6 +11,7 @@ import FateResult from "./pages/FateResult";
 import TurnEnd from "./pages/TurnEnd";
 import RoundEnd from "./pages/RoundEnd";
 import FinalScores from "./pages/FinalScores";
+import Info from "./pages/Info";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/info" element={<Info />} />
           <Route path="/setup" element={<Setup />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/ready" element={<Ready />} />
