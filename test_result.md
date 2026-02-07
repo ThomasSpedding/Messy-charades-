@@ -107,7 +107,7 @@ user_problem_statement: "Test the Heads Up Drinking Game application thoroughly:
 frontend:
   - task: "Home Page"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Home.jsx"
     stuck_count: 0
     priority: "high"
@@ -116,6 +116,9 @@ frontend:
         - working: "NA"
         - agent: "testing"
         - comment: "Initial testing of Home page to ensure Start Game button works."
+        - working: true
+        - agent: "testing"
+        - comment: "Home page loads correctly. The Info button is visible in the top right. Start Game button works as expected, navigating to the Setup page."
   
   - task: "Setup Page"
     implemented: true
