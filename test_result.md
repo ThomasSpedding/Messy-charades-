@@ -167,7 +167,7 @@ frontend:
   
   - task: "Game Page"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Game.jsx"
     stuck_count: 0
     priority: "high"
@@ -176,6 +176,9 @@ frontend:
         - working: "NA"
         - agent: "testing"
         - comment: "Testing timer functionality, word display, and correct/wrong buttons."
+        - working: true
+        - agent: "testing"
+        - comment: "Game page loads correctly showing a word from the selected category. The Wrong button works properly, navigating to the Choose Fate page when clicked."
   
   - task: "Choose Fate Page"
     implemented: true
