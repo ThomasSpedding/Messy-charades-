@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Check, X, Trophy } from 'lucide-react';
+import { Check, X, Trophy, ArrowUp, ArrowDown } from 'lucide-react';
 import { wordLists } from '../data/wordLists';
 
 const Game = () => {
@@ -14,6 +14,11 @@ const Game = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [gameActive, setGameActive] = useState(true);
+  const [swipeDirection, setSwipeDirection] = useState(null);
+  
+  const touchStartY = useRef(0);
+  const touchEndY = useRef(0);
+  const gameAreaRef = useRef(null);
 
   useEffect(() => {
     // Get words for selected category
@@ -64,6 +69,7 @@ const Game = () => {
         });
       }, 1000);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameActive, timeLeft]);
 
   const shuffleArray = (array) => {
@@ -73,6 +79,38 @@ const Game = () => {
       [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
     return newArray;
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (!gameActive) return;
+    
+    const swipeDistance = touchStartY.current - touchEndY.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Swiped up - Correct
+        handleCorrect();
+        setSwipeDirection('up');
+        setTimeout(() => setSwipeDirection(null), 300);
+      } else {
+        // Swiped down - Wrong
+        handleWrong();
+        setSwipeDirection('down');
+        setTimeout(() => setSwipeDirection(null), 300);
+      }
+    }
+
+    touchStartY.current = 0;
+    touchEndY.current = 0;
   };
 
   const handleCorrect = () => {
@@ -101,7 +139,25 @@ const Game = () => {
   const timerColor = timeLeft <= 10 ? 'text-red-500' : timeLeft <= 20 ? 'text-orange-500' : 'text-green-500';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 flex flex-col">
+    <div 
+      className="min-h-screen bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 flex flex-col relative overflow-hidden"
+      ref={gameAreaRef}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Swipe Indicators */}
+      {swipeDirection === 'up' && (
+        <div className="absolute inset-0 bg-green-500/30 flex items-center justify-center z-50 animate-fade-out pointer-events-none">
+          <ArrowUp className="w-32 h-32 text-white drop-shadow-2xl" />
+        </div>
+      )}
+      {swipeDirection === 'down' && (
+        <div className="absolute inset-0 bg-red-500/30 flex items-center justify-center z-50 animate-fade-out pointer-events-none">
+          <ArrowDown className="w-32 h-32 text-white drop-shadow-2xl" />
+        </div>
+      )}
+
       {/* Timer Header */}
       <div className="bg-white/90 backdrop-blur-sm shadow-lg p-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -115,36 +171,57 @@ const Game = () => {
         </div>
       </div>
 
-      {/* Word Display - Rotated */}
+      {/* Word Display - NOT Rotated */}
       <div className="flex-1 flex items-center justify-center p-8">
-        <div className="transform rotate-180">
-          <div className="bg-white rounded-3xl shadow-2xl p-12 min-w-[300px] text-center">
-            <h2 className="text-6xl font-black text-gray-800 break-words">
-              {currentWord}
-            </h2>
+        <div className="bg-white rounded-3xl shadow-2xl p-12 min-w-[300px] max-w-2xl w-full text-center">
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-800 break-words">
+            {currentWord}
+          </h2>
+        </div>
+      </div>
+
+      {/* Swipe Instructions */}
+      <div className="bg-white/90 backdrop-blur-sm shadow-lg p-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-8 text-gray-700">
+            <div className="flex flex-col items-center">
+              <ArrowUp className="w-10 h-10 text-green-600 mb-2" />
+              <span className="text-sm font-semibold">Swipe Up</span>
+              <span className="text-xs text-gray-500">Correct</span>
+            </div>
+            <div className="text-2xl font-black text-gray-400">|</div>
+            <div className="flex flex-col items-center">
+              <ArrowDown className="w-10 h-10 text-red-600 mb-2" />
+              <span className="text-sm font-semibold">Swipe Down</span>
+              <span className="text-xs text-gray-500">Wrong</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Action Buttons - Rotated */}
-      <div className="bg-white/90 backdrop-blur-sm shadow-lg p-6 transform rotate-180">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4">
+      {/* Fallback Buttons for testing/accessibility */}
+      <div className="bg-gray-100 p-2">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 gap-2">
           <Button
             onClick={handleWrong}
-            className="h-24 text-2xl font-bold bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-xl"
+            variant="outline"
+            size="sm"
+            className="h-10 text-xs"
             disabled={!gameActive}
           >
-            <X className="w-10 h-10 mr-2" />
-            Wrong
+            <X className="w-4 h-4 mr-1" />
+            Wrong (or swipe down)
           </Button>
           
           <Button
             onClick={handleCorrect}
-            className="h-24 text-2xl font-bold bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-xl"
+            variant="outline"
+            size="sm"
+            className="h-10 text-xs"
             disabled={!gameActive}
           >
-            <Check className="w-10 h-10 mr-2" />
-            Correct
+            <Check className="w-4 h-4 mr-1" />
+            Correct (or swipe up)
           </Button>
         </div>
       </div>
