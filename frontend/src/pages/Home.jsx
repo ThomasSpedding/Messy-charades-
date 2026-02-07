@@ -1,13 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Sparkles, Beer, Dices } from 'lucide-react';
+import { Sparkles, Beer, Dices, Info } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center p-4 relative">
+      {/* Info Button */}
+      <Button
+        onClick={() => navigate('/info')}
+        variant="outline"
+        className="absolute top-4 right-4 h-12 w-12 p-0 rounded-full bg-white/90 hover:bg-white border-2 border-white/50 shadow-lg"
+      >
+        <Info className="w-6 h-6 text-purple-600" />
+      </Button>
+
       <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
         <div className="space-y-4">
           <div className="flex justify-center">
