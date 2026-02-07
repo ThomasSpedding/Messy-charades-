@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
-import { ArrowLeft, Code, Heart } from 'lucide-react';
+import { ArrowLeft, Beer, Heart } from 'lucide-react';
 
 const Info = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Info = () => {
         <div className="text-center space-y-6">
           <div className="flex justify-center">
             <div className="bg-gradient-to-br from-purple-500 to-pink-500 p-6 rounded-full">
-              <Code className="w-16 h-16 text-white" />
+              <Beer className="w-16 h-16 text-white" />
             </div>
           </div>
 
@@ -21,9 +21,6 @@ const Info = () => {
             <h1 className="text-5xl font-black text-gray-800">
               Messy Charades
             </h1>
-            <p className="text-xl text-gray-600 font-semibold">
-              Drinking Game Edition
-            </p>
           </div>
 
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-purple-200 space-y-4">
