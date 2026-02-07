@@ -18,11 +18,11 @@ const Home = () => {
           </div>
           
           <h1 className="text-6xl font-black text-white drop-shadow-2xl tracking-tight">
-            Heads Up!
+            Messy Charades
           </h1>
           
           <p className="text-2xl font-bold text-white drop-shadow-lg">
-            Drinking Edition
+            Drinking Game Edition
           </p>
           
           <p className="text-lg text-white/90 drop-shadow-md px-4">
