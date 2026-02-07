@@ -11,7 +11,7 @@ const Setup = () => {
   const navigate = useNavigate();
   const [players, setPlayers] = useState(['', '', '']);
   const [timerDuration, setTimerDuration] = useState(60);
-  const [rounds, setRounds] = useState(3);
+  const [rounds, setRounds] = useState(1);
 
   const addPlayer = () => {
     setPlayers([...players, '']);
