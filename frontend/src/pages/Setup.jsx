@@ -129,7 +129,7 @@ const Setup = () => {
                   min="1"
                   max="10"
                   value={rounds}
-                  onChange={(e) => setRounds(parseInt(e.target.value) || 3)}
+                  onChange={(e) => setRounds(parseInt(e.target.value) || 1)}
                   className="h-12 text-lg text-center font-bold"
                 />
               </div>
