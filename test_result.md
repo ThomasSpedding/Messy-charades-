@@ -182,7 +182,7 @@ frontend:
   
   - task: "Choose Fate Page"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/ChooseFate.jsx"
     stuck_count: 0
     priority: "high"
@@ -191,6 +191,9 @@ frontend:
         - working: "NA"
         - agent: "testing"
         - comment: "Testing fate selection options when player gets a word wrong."
+        - working: true
+        - agent: "testing"
+        - comment: "Choose Fate page loads correctly showing the missed word. Truth or Dare button works properly, randomly selecting either TRUTH or DARE and navigating to the Fate Result page."
   
   - task: "Fate Result Page"
     implemented: true
