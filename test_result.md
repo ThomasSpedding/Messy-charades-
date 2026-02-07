@@ -122,7 +122,7 @@ frontend:
   
   - task: "Setup Page"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Setup.jsx"
     stuck_count: 0
     priority: "high"
@@ -131,6 +131,9 @@ frontend:
         - working: "NA"
         - agent: "testing"
         - comment: "Testing player creation, timer setting, and round setting functionality."
+        - working: true
+        - agent: "testing"
+        - comment: "Setup page loads correctly. Player name inputs work properly. Continue button navigates to Categories page after adding players."
   
   - task: "Categories Page"
     implemented: true
