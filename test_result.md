@@ -101,3 +101,151 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the Heads Up Drinking Game application thoroughly: game flow from home screen through all gameplay screens, with special attention to score tracking, timer functionality, and multi-round play."
+
+frontend:
+  - task: "Home Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Home.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Initial testing of Home page to ensure Start Game button works."
+  
+  - task: "Setup Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Setup.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing player creation, timer setting, and round setting functionality."
+  
+  - task: "Categories Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Categories.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing category selection functionality."
+  
+  - task: "Ready Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Ready.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing ready screen functionality."
+  
+  - task: "Game Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Game.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing timer functionality, word display, and correct/wrong buttons."
+  
+  - task: "Choose Fate Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/ChooseFate.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing fate selection options when player gets a word wrong."
+  
+  - task: "Fate Result Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/FateResult.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing truth or dare result display."
+  
+  - task: "Turn End Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/TurnEnd.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing points earned display and score tracking."
+  
+  - task: "Round End Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/RoundEnd.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing round completion display and score tracking."
+  
+  - task: "Final Scores Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/FinalScores.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+        - agent: "testing"
+        - comment: "Testing final score display, winner/loser detection."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 0
+
+test_plan:
+  current_focus:
+    - "Home Page"
+    - "Setup Page"
+    - "Categories Page"
+    - "Ready Page"
+    - "Game Page"
+    - "Choose Fate Page"
+    - "Fate Result Page"
+    - "Turn End Page"
+    - "Round End Page"
+    - "Final Scores Page"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "sequential"
+
+agent_communication:
+    - agent: "testing"
+    - message: "Beginning testing of the Heads Up Drinking Game application. Will test the complete game flow from Home page to Final Scores, following the specific test scenario in the user's review request."
