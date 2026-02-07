@@ -1,52 +1,35 @@
-import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import { Toaster } from "./components/ui/toaster";
+import Home from "./pages/Home";
+import Setup from "./pages/Setup";
+import Categories from "./pages/Categories";
+import Ready from "./pages/Ready";
+import Game from "./pages/Game";
+import ChooseFate from "./pages/ChooseFate";
+import FateResult from "./pages/FateResult";
+import TurnEnd from "./pages/TurnEnd";
+import RoundEnd from "./pages/RoundEnd";
+import FinalScores from "./pages/FinalScores";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/setup" element={<Setup />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/ready" element={<Ready />} />
+          <Route path="/game" element={<Game />} />
+          <Route path="/choose-fate" element={<ChooseFate />} />
+          <Route path="/fate-result" element={<FateResult />} />
+          <Route path="/turn-end" element={<TurnEnd />} />
+          <Route path="/round-end" element={<RoundEnd />} />
+          <Route path="/final-scores" element={<FinalScores />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }
