@@ -70,7 +70,7 @@ const FinalScores = () => {
                 {loser[0]} has the lowest score!
               </p>
               <p className="text-4xl font-black text-gray-800">
-                TIME TO DRINK! 🍺
+                TIME TO TAKE A SHOT! 🥃
               </p>
             </div>
           </div>
