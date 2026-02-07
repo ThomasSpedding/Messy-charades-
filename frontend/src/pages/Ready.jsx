@@ -25,14 +25,24 @@ const Ready = () => {
           
           <div className="text-xl text-gray-600 space-y-2">
             <p className="font-bold">Get Ready!</p>
-            <p>Place the phone on your forehead</p>
-            <p className="text-sm text-gray-500">so others can see the word but you can't!</p>
+            <p>Face the phone towards other players</p>
+            <p className="text-sm text-gray-500">so they can see the word but you can't!</p>
           </div>
 
-          <div className="bg-teal-50 p-4 rounded-lg border-2 border-teal-200">
+          <div className="bg-teal-50 p-4 rounded-lg border-2 border-teal-200 space-y-2">
             <p className="text-sm font-semibold text-teal-800">
               Timer: {gameState?.timerDuration} seconds
             </p>
+            <div className="flex items-center justify-center gap-6 text-sm text-teal-700 font-medium pt-2">
+              <div className="flex flex-col items-center">
+                <ArrowRight className="w-6 h-6 rotate-[-90deg]" />
+                <span>Swipe Up = Correct</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <ArrowRight className="w-6 h-6 rotate-90" />
+                <span>Swipe Down = Wrong</span>
+              </div>
+            </div>
           </div>
         </div>
 
