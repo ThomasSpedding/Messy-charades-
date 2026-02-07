@@ -198,33 +198,6 @@ const Game = () => {
           </div>
         </div>
       </div>
-
-      {/* Fallback Buttons for testing/accessibility */}
-      <div className="bg-gray-100 p-2">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 gap-2">
-          <Button
-            onClick={handleWrong}
-            variant="outline"
-            size="sm"
-            className="h-10 text-xs"
-            disabled={!gameActive}
-          >
-            <X className="w-4 h-4 mr-1" />
-            Wrong (or swipe down)
-          </Button>
-          
-          <Button
-            onClick={handleCorrect}
-            variant="outline"
-            size="sm"
-            className="h-10 text-xs"
-            disabled={!gameActive}
-          >
-            <Check className="w-4 h-4 mr-1" />
-            Correct (or swipe up)
-          </Button>
-        </div>
-      </div>
     </div>
   );
 };
