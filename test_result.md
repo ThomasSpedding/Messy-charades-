@@ -137,7 +137,7 @@ frontend:
   
   - task: "Categories Page"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/pages/Categories.jsx"
     stuck_count: 0
     priority: "high"
@@ -146,6 +146,9 @@ frontend:
         - working: "NA"
         - agent: "testing"
         - comment: "Testing category selection functionality."
+        - working: true
+        - agent: "testing"
+        - comment: "Categories page displays all game categories correctly. Clicking on a category (Animals) works as expected, navigating to the Ready page."
   
   - task: "Ready Page"
     implemented: true
